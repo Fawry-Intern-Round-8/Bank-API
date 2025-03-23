@@ -2,7 +2,6 @@ package com.example.demo.controller;
 
 import com.example.demo.Service.AccountService;
 import com.example.demo.entities.Account;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,7 +13,6 @@ public class AccountController {
 
     private final AccountService accountService;
 
-    @Autowired
     public AccountController(AccountService accountService) {
         this.accountService = accountService;
     }
@@ -33,5 +31,12 @@ public class AccountController {
     public Account getAccountById(@PathVariable("id") UUID id) {
         return accountService.getAccountById(id).orElse(null);
     }
-
+    @GetMapping("cardNumber/{id}")
+    public String getCardNumberByAccountId(@PathVariable("id")UUID id){
+        return accountService.getAccountById(id).map(Account::getCardNumber).orElse(null);
+    }
+    @GetMapping("balance/{id}")
+    public Double getBalanceByAccountId(@PathVariable("id")UUID id){
+        return accountService.getAccountById(id).map(Account::getBalance).orElse(null);
+    }
 }

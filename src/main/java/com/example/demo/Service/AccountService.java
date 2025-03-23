@@ -2,7 +2,6 @@ package com.example.demo.Service;
 
 import com.example.demo.Repository.AccountRepository;
 import com.example.demo.entities.Account;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +12,6 @@ import java.util.UUID;
 public class AccountService {
     private final AccountRepository accountRepository;
 
-    @Autowired
     public AccountService(AccountRepository accountRepository) {
         this.accountRepository = accountRepository;
     }
@@ -45,5 +43,4 @@ public class AccountService {
     public Account updateAccount(UUID id, Account account) {
         return accountRepository.save(account);
     }
-
 }
