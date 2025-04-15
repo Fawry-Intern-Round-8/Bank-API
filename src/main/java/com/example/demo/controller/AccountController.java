@@ -39,4 +39,10 @@ public class AccountController {
     public Double getBalanceByAccountId(@PathVariable("id")Long id){
         return accountService.getAccountById(id).map(Account::getBalance).orElse(null);
     }
+
+    @GetMapping("/{email}")
+    public Account getAccountByEmail(@PathVariable("email") String email) {
+        return accountService.getAccountByEmail(email).orElse(null);
+    }
+
 }
