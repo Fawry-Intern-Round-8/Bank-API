@@ -5,7 +5,6 @@ import com.example.demo.entities.Account;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/accounts")
@@ -24,19 +23,20 @@ public class AccountController {
 
     @PostMapping("/create")
     public Account createAccount(@RequestBody Account account) {
+        account.setId(null);
         return accountService.createAccount(account);
     }
 
     @GetMapping("/{id}")
-    public Account getAccountById(@PathVariable("id") UUID id) {
+    public Account getAccountById(@PathVariable("id") Long id) {
         return accountService.getAccountById(id).orElse(null);
     }
     @GetMapping("cardNumber/{id}")
-    public String getCardNumberByAccountId(@PathVariable("id")UUID id){
+    public String getCardNumberByAccountId(@PathVariable("id")Long id){
         return accountService.getAccountById(id).map(Account::getCardNumber).orElse(null);
     }
     @GetMapping("balance/{id}")
-    public Double getBalanceByAccountId(@PathVariable("id")UUID id){
+    public Double getBalanceByAccountId(@PathVariable("id")Long id){
         return accountService.getAccountById(id).map(Account::getBalance).orElse(null);
     }
 }
