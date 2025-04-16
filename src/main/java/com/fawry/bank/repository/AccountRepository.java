@@ -1,8 +1,8 @@
 package com.fawry.bank.repository;
 
+import com.fawry.bank.entities.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.fawry.bank.entities.Account;
 
 import java.util.Optional;
 
