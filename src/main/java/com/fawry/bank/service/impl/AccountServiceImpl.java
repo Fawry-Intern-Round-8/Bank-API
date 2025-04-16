@@ -1,17 +1,15 @@
 package com.fawry.bank.service.impl;
 
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
+import com.fawry.bank.entities.Account;
+import com.fawry.bank.entities.AccountRequest;
 import com.fawry.bank.exceptions.CardGenerationException;
 import com.fawry.bank.exceptions.DuplicateAccountException;
 import com.fawry.bank.repository.AccountRepository;
 import com.fawry.bank.service.AccountService;
-import com.fawry.bank.entities.Account;
-import com.fawry.bank.entities.AccountRequest;
 import com.fawry.bank.utils.CardNumberGenerator;
-
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;

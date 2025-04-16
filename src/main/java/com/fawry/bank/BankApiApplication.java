@@ -7,7 +7,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @SpringBootApplication
 @EnableDiscoveryClient
 public class BankApiApplication {
-	public static void main(String[] args) {
-		SpringApplication.run(BankApiApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(BankApiApplication.class, args);
+    }
 }

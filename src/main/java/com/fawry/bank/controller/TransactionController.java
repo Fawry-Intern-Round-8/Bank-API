@@ -1,17 +1,21 @@
 package com.fawry.bank.controller;
 
-import org.springframework.web.bind.annotation.*;
-
-import com.fawry.bank.service.impl.TransactionServiceImpl;
 import com.fawry.bank.entities.DepositRequest;
 import com.fawry.bank.entities.Transaction;
 import com.fawry.bank.entities.WithdrawRequest;
+import com.fawry.bank.service.impl.TransactionServiceImpl;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/bank/transactions")
+@RequestMapping("api/v1/bank/transactions")
 public class TransactionController {
     private final TransactionServiceImpl transactionService;
 
@@ -19,7 +23,7 @@ public class TransactionController {
         this.transactionService = transactionService;
     }
 
-    @GetMapping("")
+    @GetMapping
     public List<Transaction> getTransactions() {
         return transactionService.getAllTransactions();
     }

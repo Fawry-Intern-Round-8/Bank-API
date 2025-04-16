@@ -1,14 +1,14 @@
 package com.fawry.bank.service.impl;
 
+import com.fawry.bank.entities.Account;
+import com.fawry.bank.entities.DepositRequest;
+import com.fawry.bank.entities.Transaction;
+import com.fawry.bank.entities.WithdrawRequest;
 import com.fawry.bank.exceptions.AccountNotFoundException;
 import com.fawry.bank.exceptions.InsufficientFundsException;
 import com.fawry.bank.repository.AccountRepository;
 import com.fawry.bank.repository.TransactionRepository;
 import com.fawry.bank.service.TransactionService;
-import com.fawry.bank.entities.Account;
-import com.fawry.bank.entities.DepositRequest;
-import com.fawry.bank.entities.Transaction;
-import com.fawry.bank.entities.WithdrawRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

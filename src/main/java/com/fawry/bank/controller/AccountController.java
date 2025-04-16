@@ -1,12 +1,11 @@
 package com.fawry.bank.controller;
 
-import com.fawry.bank.service.impl.AccountServiceImpl;
 import com.fawry.bank.entities.Account;
 import com.fawry.bank.entities.AccountRequest;
 import com.fawry.bank.entities.LoginRequest;
+import com.fawry.bank.service.impl.AccountServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,10 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-
-@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/bank/accounts")
+@RequestMapping("api/v1/bank/accounts")
 public class AccountController {
 
     private final AccountServiceImpl accountService;
@@ -29,7 +26,7 @@ public class AccountController {
         this.accountService = accountService;
     }
 
-    @GetMapping("")
+    @GetMapping
     public List<Account> getAccounts() {
         return accountService.getAllAccounts();
     }
@@ -43,12 +40,12 @@ public class AccountController {
         return ResponseEntity.ok(accountService.createAccount(accountRequest));
     }
 
-    @GetMapping("cardNumber/{id}")
+    @GetMapping("/cardNumber/{id}")
     public String getCardNumberByAccountId(@PathVariable("id") Long id) {
         return accountService.getAccountById(id).map(Account::getCardNumber).orElse(null);
     }
 
-    @GetMapping("balance/{id}")
+    @GetMapping("/balance/{id}")
     public Double getBalanceByAccountId(@PathVariable("id") Long id) {
         return accountService.getAccountById(id).map(Account::getBalance).orElse(null);
     }

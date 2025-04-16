@@ -1,6 +1,7 @@
 # Bank-API
 
 ## Use Case
+
 ```mermaid
 graph TD
   Customer -- Create Account --> BankAPI
@@ -46,7 +47,9 @@ erDiagram
     ACCOUNT ||--o{ TRANSACTION : has
     TRANSACTION ||--|| TRANSACTION_LOG : logs
 ```
+
 ## Class Diagram
+
 ```mermaid
 classDiagram
     class Account {
