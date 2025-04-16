@@ -1,18 +1,21 @@
 package com.fawry.bank.controller;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
 import com.fawry.bank.Service.impl.AccountServiceImpl;
 import com.fawry.bank.entities.Account;
 import com.fawry.bank.entities.AccountRequest;
 import com.fawry.bank.entities.LoginRequest;
-
-import java.util.List;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -35,12 +38,14 @@ public class AccountController {
     public Account createAccount(@RequestBody AccountRequest accountRequest) {
         return accountService.createAccount(accountRequest);
     }
+
     @GetMapping("cardNumber/{id}")
-    public String getCardNumberByAccountId(@PathVariable("id")Long id){
+    public String getCardNumberByAccountId(@PathVariable("id") Long id) {
         return accountService.getAccountById(id).map(Account::getCardNumber).orElse(null);
     }
+
     @GetMapping("balance/{id}")
-    public Double getBalanceByAccountId(@PathVariable("id")Long id){
+    public Double getBalanceByAccountId(@PathVariable("id") Long id) {
         return accountService.getAccountById(id).map(Account::getBalance).orElse(null);
     }
 
@@ -48,10 +53,12 @@ public class AccountController {
     public Account getAccountByEmail(@PathVariable("email") String email) {
         return accountService.getAccountByEmail(email).orElse(null);
     }
+
     @PutMapping("/{id}")
     public Account updateAccount(@PathVariable Long id, @RequestBody AccountRequest accountRequest) {
         return accountService.updateAccount(id, accountRequest);
     }
+
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest request) {
 

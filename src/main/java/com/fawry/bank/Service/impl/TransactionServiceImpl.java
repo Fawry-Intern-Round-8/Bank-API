@@ -1,14 +1,5 @@
 package com.fawry.bank.Service.impl;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.fawry.bank.Exceptions.AccountNotFoundException;
 import com.fawry.bank.Exceptions.InsufficientFundsException;
 import com.fawry.bank.Repository.AccountRepository;
@@ -18,6 +9,13 @@ import com.fawry.bank.entities.Account;
 import com.fawry.bank.entities.DepositRequest;
 import com.fawry.bank.entities.Transaction;
 import com.fawry.bank.entities.WithdrawRequest;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @Service
 public class TransactionServiceImpl implements TransactionService {
@@ -25,13 +23,15 @@ public class TransactionServiceImpl implements TransactionService {
     private final TransactionRepository transactionRepository;
     @Autowired
     private AccountRepository accountRepository;
+
     public TransactionServiceImpl(TransactionRepository transactionRepository) {
-        this.transactionRepository=transactionRepository;
+        this.transactionRepository = transactionRepository;
     }
 
-    public List<Transaction>getAllTransactions(){
+    public List<Transaction> getAllTransactions() {
         return transactionRepository.findAll();
     }
+
     @Override
     @Transactional
     public Transaction deposit(DepositRequest request) {
@@ -59,8 +59,8 @@ public class TransactionServiceImpl implements TransactionService {
     @Override
     public List<Transaction> getTransactionsByAccountId(Long accountId) {
         List<Transaction> list = new ArrayList<>();
-        for(Transaction transaction : transactionRepository.findAll()) {
-            if(transaction.getAccount().getId().equals(accountId)) {
+        for (Transaction transaction : transactionRepository.findAll()) {
+            if (transaction.getAccount().getId().equals(accountId)) {
                 list.add(transaction);
             }
         }
@@ -74,8 +74,8 @@ public class TransactionServiceImpl implements TransactionService {
         }
     }
 
-    private Transaction createTransaction(Account account, String type, 
-                                        double amount, String notes) {
+    private Transaction createTransaction(Account account, String type,
+                                          double amount, String notes) {
         account.setActive(true);
         Transaction transaction = new Transaction();
         transaction.setAccount(account);
@@ -85,10 +85,12 @@ public class TransactionServiceImpl implements TransactionService {
         transaction.setTimestamp(new Date());
         return transactionRepository.save(transaction);
     }
-    public Transaction getTransactionById(Long id){
+
+    public Transaction getTransactionById(Long id) {
         return transactionRepository.findById(id).orElse(null);
     }
-    public void deleteTransaction(Long id){
+
+    public void deleteTransaction(Long id) {
         transactionRepository.deleteById(id);
     }
 }

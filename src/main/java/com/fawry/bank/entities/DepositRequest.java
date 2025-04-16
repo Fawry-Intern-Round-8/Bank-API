@@ -12,10 +12,10 @@ public class DepositRequest {
     @NotBlank
     @Pattern(regexp = "^[0-9]{16}$")
     private String cardNumber;
-    
+
     @Positive
     private double amount;
-    
+
     @Size(max = 255)
     private String notes;
 }

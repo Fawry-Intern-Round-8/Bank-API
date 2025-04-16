@@ -18,7 +18,7 @@ import java.util.Optional;
 
 @Service
 @Slf4j
-public class AccountServiceImpl implements AccountService{
+public class AccountServiceImpl implements AccountService {
     private final AccountRepository accountRepository;
 
     public AccountServiceImpl(AccountRepository accountRepository) {
@@ -43,41 +43,42 @@ public class AccountServiceImpl implements AccountService{
 
     @Override
     public Account createAccount(AccountRequest accountRequest) {
-        Account account=new Account();
+        Account account = new Account();
         account.setName(accountRequest.getName());
         account.setPasswordHash(accountRequest.getPasswordHash());
         account.setEmail(accountRequest.getEmail());
         String cardNumber;
         int attempts = 0;
         final int MAX_ATTEMPTS = 5;
-        
+
         do {
             cardNumber = CardNumberGenerator.generate();
             attempts++;
-            
+
             if (attempts >= MAX_ATTEMPTS) {
                 throw new CardGenerationException("Failed to generate unique card number after " + MAX_ATTEMPTS + " attempts");
             }
         } while (accountRepository.existsByCardNumber(cardNumber));
-        log.info("cardNumber : "+cardNumber);
+        log.info("cardNumber : " + cardNumber);
         account.setCardNumber(cardNumber);
-        
+
         if (accountRepository.existsByEmail(account.getEmail())) {
             throw new DuplicateAccountException("Email already exists");
         }
         account.setBalance(0.0);
-        
-        
+
+
         return accountRepository.save(account);
     }
 
     public void deleteAccount(Long id) {
         accountRepository.deleteById(id);
     }
+
     @Override
     @Transactional
     public Account updateAccount(Long id, AccountRequest accountRequest) {
-        Account account = accountRepository.getById(id); 
+        Account account = accountRepository.getReferenceById(id);
         account.setEmail(accountRequest.getEmail());
         account.setName(accountRequest.getName());
         account.setPasswordHash(accountRequest.getPasswordHash());

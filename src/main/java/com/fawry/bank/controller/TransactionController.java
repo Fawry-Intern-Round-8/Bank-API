@@ -14,13 +14,16 @@ import java.util.List;
 @RequestMapping("/bank/transactions")
 public class TransactionController {
     private final TransactionServiceImpl transactionService;
+
     public TransactionController(TransactionServiceImpl transactionService) {
         this.transactionService = transactionService;
     }
+
     @GetMapping("")
     public List<Transaction> getTransactions() {
         return transactionService.getAllTransactions();
     }
+
     @PostMapping("/deposit")
     public Transaction deposit(@RequestBody DepositRequest request) {
         return transactionService.deposit(request);
@@ -30,14 +33,17 @@ public class TransactionController {
     public Transaction withdraw(@RequestBody WithdrawRequest request) {
         return transactionService.withdraw(request);
     }
+
     @GetMapping("/{id}")
     public Transaction getTransactionById(@PathVariable Long id) {
         return transactionService.getTransactionById(id);
     }
+
     @DeleteMapping("/{id}")
     public void deleteTransaction(@PathVariable Long id) {
         transactionService.deleteTransaction(id);
     }
+
     @GetMapping("/account/{accountId}")
     public List<Transaction> getTransactionsByAccountId(@PathVariable Long accountId) {
         return transactionService.getTransactionsByAccountId(accountId);
