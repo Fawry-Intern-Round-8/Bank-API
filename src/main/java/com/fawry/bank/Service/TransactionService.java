@@ -1,4 +1,4 @@
-package com.example.demo.Service;
+package com.fawry.bank.Service;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -7,11 +7,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.Repository.AccountRepository;
-import com.example.demo.Repository.TransactionRepository;
-import com.example.demo.entities.Account;
-import com.example.demo.entities.Transaction;
-import com.example.demo.entities.TransactionRequest;
+import com.fawry.bank.Repository.AccountRepository;
+import com.fawry.bank.Repository.TransactionRepository;
+import com.fawry.bank.entities.Account;
+import com.fawry.bank.entities.Transaction;
+import com.fawry.bank.entities.TransactionRequest;
 
 @Service
 public class TransactionService {

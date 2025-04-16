@@ -1,8 +1,8 @@
-package com.example.demo.controller;
+package com.fawry.bank.controller;
 
-import com.example.demo.Service.TransactionService;
-import com.example.demo.entities.Transaction;
-import com.example.demo.entities.TransactionRequest;
+import com.fawry.bank.Service.TransactionService;
+import com.fawry.bank.entities.Transaction;
+import com.fawry.bank.entities.TransactionRequest;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

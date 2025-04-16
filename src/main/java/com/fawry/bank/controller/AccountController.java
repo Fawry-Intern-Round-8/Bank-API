@@ -1,8 +1,8 @@
-package com.example.demo.controller;
+package com.fawry.bank.controller;
 
-import com.example.demo.Service.AccountService;
-import com.example.demo.entities.Account;
-import com.example.demo.entities.LoginRequest;
+import com.fawry.bank.Service.AccountService;
+import com.fawry.bank.entities.Account;
+import com.fawry.bank.entities.LoginRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
