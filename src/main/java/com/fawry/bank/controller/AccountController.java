@@ -1,6 +1,6 @@
 package com.fawry.bank.controller;
 
-import com.fawry.bank.Service.impl.AccountServiceImpl;
+import com.fawry.bank.service.impl.AccountServiceImpl;
 import com.fawry.bank.entities.Account;
 import com.fawry.bank.entities.AccountRequest;
 import com.fawry.bank.entities.LoginRequest;

@@ -1,4 +1,4 @@
-package com.fawry.bank.Service;
+package com.fawry.bank.service;
 
 import com.fawry.bank.entities.Account;
 import com.fawry.bank.entities.AccountRequest;

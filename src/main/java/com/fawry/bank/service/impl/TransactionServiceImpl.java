@@ -1,10 +1,10 @@
-package com.fawry.bank.Service.impl;
+package com.fawry.bank.service.impl;
 
-import com.fawry.bank.Exceptions.AccountNotFoundException;
-import com.fawry.bank.Exceptions.InsufficientFundsException;
-import com.fawry.bank.Repository.AccountRepository;
-import com.fawry.bank.Repository.TransactionRepository;
-import com.fawry.bank.Service.TransactionService;
+import com.fawry.bank.exceptions.AccountNotFoundException;
+import com.fawry.bank.exceptions.InsufficientFundsException;
+import com.fawry.bank.repository.AccountRepository;
+import com.fawry.bank.repository.TransactionRepository;
+import com.fawry.bank.service.TransactionService;
 import com.fawry.bank.entities.Account;
 import com.fawry.bank.entities.DepositRequest;
 import com.fawry.bank.entities.Transaction;

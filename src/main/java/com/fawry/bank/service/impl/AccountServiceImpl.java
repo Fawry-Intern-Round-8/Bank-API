@@ -1,12 +1,12 @@
-package com.fawry.bank.Service.impl;
+package com.fawry.bank.service.impl;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.fawry.bank.Exceptions.CardGenerationException;
-import com.fawry.bank.Exceptions.DuplicateAccountException;
-import com.fawry.bank.Repository.AccountRepository;
-import com.fawry.bank.Service.AccountService;
+import com.fawry.bank.exceptions.CardGenerationException;
+import com.fawry.bank.exceptions.DuplicateAccountException;
+import com.fawry.bank.repository.AccountRepository;
+import com.fawry.bank.service.AccountService;
 import com.fawry.bank.entities.Account;
 import com.fawry.bank.entities.AccountRequest;
 import com.fawry.bank.utils.CardNumberGenerator;
