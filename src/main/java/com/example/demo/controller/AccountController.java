@@ -2,10 +2,14 @@ package com.example.demo.controller;
 
 import com.example.demo.Service.AccountService;
 import com.example.demo.entities.Account;
+import com.example.demo.entities.LoginRequest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/accounts")
 public class AccountController {
@@ -45,4 +49,19 @@ public class AccountController {
         return accountService.getAccountByEmail(email).orElse(null);
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody LoginRequest request) {
+
+        System.out.println("Login request: " + request.getEmail() + ", " + request.getPassword());
+
+        Account account = accountService.getAccountByEmail(request.getEmail()).orElse(null);
+
+        if (account == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid email or password");
+        } else if (!account.getPasswordHash().equals(request.getPassword())) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid email or password");
+        } else {
+            return ResponseEntity.ok(account);
+        }
+    }
 }
