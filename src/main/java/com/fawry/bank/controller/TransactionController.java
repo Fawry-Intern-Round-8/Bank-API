@@ -1,6 +1,6 @@
 package com.fawry.bank.controller;
 
-import com.fawry.bank.Service.TransactionService;
+import com.fawry.bank.service.TransactionService;
 import com.fawry.bank.entities.Transaction;
 import com.fawry.bank.entities.TransactionRequest;
 import org.springframework.web.bind.annotation.*;

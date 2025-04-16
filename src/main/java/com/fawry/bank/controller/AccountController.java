@@ -1,6 +1,6 @@
 package com.fawry.bank.controller;
 
-import com.fawry.bank.Service.AccountService;
+import com.fawry.bank.service.AccountService;
 import com.fawry.bank.entities.Account;
 import com.fawry.bank.entities.LoginRequest;
 import org.springframework.http.HttpStatus;

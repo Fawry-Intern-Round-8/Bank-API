@@ -1,6 +1,6 @@
-package com.fawry.bank.Service;
+package com.fawry.bank.service;
 
-import com.fawry.bank.Repository.AccountRepository;
+import com.fawry.bank.repository.AccountRepository;
 import com.fawry.bank.entities.Account;
 import org.springframework.stereotype.Service;
 

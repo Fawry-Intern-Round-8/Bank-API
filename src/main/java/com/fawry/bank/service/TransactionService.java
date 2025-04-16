@@ -1,4 +1,4 @@
-package com.fawry.bank.Service;
+package com.fawry.bank.service;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -7,8 +7,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fawry.bank.Repository.AccountRepository;
-import com.fawry.bank.Repository.TransactionRepository;
+import com.fawry.bank.repository.AccountRepository;
+import com.fawry.bank.repository.TransactionRepository;
 import com.fawry.bank.entities.Account;
 import com.fawry.bank.entities.Transaction;
 import com.fawry.bank.entities.TransactionRequest;
