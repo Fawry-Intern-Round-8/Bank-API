@@ -3,7 +3,6 @@ package com.example.demo.Service;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,13 +48,13 @@ public class TransactionService {
 
         return transactionRepository.save(transaction);
     }
-    public Transaction getTransactionById(UUID id){
+    public Transaction getTransactionById(Long id){
         return transactionRepository.findById(id).orElse(null);
     }
-    public void deleteTransaction(UUID id){
+    public void deleteTransaction(Long id){
         transactionRepository.deleteById(id);
     }
-    public List<Transaction> getTransactionsByAccountId(UUID accountId){
+    public List<Transaction> getTransactionsByAccountId(Long accountId){
         List <Transaction> list = new ArrayList<Transaction>();
         for(Transaction transaction : transactionRepository.findAll()){
             if(transaction.getAccount().getId().equals(accountId)){

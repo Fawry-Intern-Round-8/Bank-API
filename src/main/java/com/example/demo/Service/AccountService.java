@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 public class AccountService {
@@ -20,7 +19,7 @@ public class AccountService {
         return accountRepository.findAll();
     }
 
-    public Optional<Account> getAccountById(UUID id) {
+    public Optional<Account> getAccountById(Long id) {
         return accountRepository.findById(id);
     }
 
@@ -36,11 +35,11 @@ public class AccountService {
         return accountRepository.save(account);
     }
 
-    public void deleteAccount(UUID id) {
+    public void deleteAccount(Long id) {
         accountRepository.deleteById(id);
     }
 
-    public Account updateAccount(UUID id, Account account) {
+    public Account updateAccount(Long id, Account account) {
         return accountRepository.save(account);
     }
 }
