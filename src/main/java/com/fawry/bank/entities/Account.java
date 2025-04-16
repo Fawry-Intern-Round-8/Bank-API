@@ -1,4 +1,4 @@
-package com.example.demo.entities;
+package com.fawry.bank.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -33,6 +33,6 @@ public class Account {
     @Column(nullable = false)
     private double balance;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private boolean isActive;
 }

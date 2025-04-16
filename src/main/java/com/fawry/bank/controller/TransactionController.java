@@ -1,27 +1,34 @@
-package com.example.demo.controller;
+package com.fawry.bank.controller;
 
-import com.example.demo.Service.TransactionService;
-import com.example.demo.entities.Transaction;
-import com.example.demo.entities.TransactionRequest;
 import org.springframework.web.bind.annotation.*;
+
+import com.fawry.bank.Service.impl.TransactionServiceImpl;
+import com.fawry.bank.entities.DepositRequest;
+import com.fawry.bank.entities.Transaction;
+import com.fawry.bank.entities.WithdrawRequest;
 
 import java.util.List;
 
 
 @RestController
-@RequestMapping("/transactions")
+@RequestMapping("/bank/transactions")
 public class TransactionController {
-    private final TransactionService transactionService;
-    public TransactionController(TransactionService transactionService) {
+    private final TransactionServiceImpl transactionService;
+    public TransactionController(TransactionServiceImpl transactionService) {
         this.transactionService = transactionService;
     }
     @GetMapping("")
     public List<Transaction> getTransactions() {
         return transactionService.getAllTransactions();
     }
-    @PostMapping
-    public Transaction createTransaction(@RequestBody TransactionRequest request) {
-        return transactionService.createTransaction(request);
+    @PostMapping("/deposit")
+    public Transaction deposit(@RequestBody DepositRequest request) {
+        return transactionService.deposit(request);
+    }
+
+    @PostMapping("/withdraw")
+    public Transaction withdraw(@RequestBody WithdrawRequest request) {
+        return transactionService.withdraw(request);
     }
     @GetMapping("/{id}")
     public Transaction getTransactionById(@PathVariable Long id) {
