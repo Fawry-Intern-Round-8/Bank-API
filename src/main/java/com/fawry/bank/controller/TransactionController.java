@@ -9,7 +9,7 @@ import com.fawry.bank.entities.WithdrawRequest;
 
 import java.util.List;
 
-
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/bank/transactions")
 public class TransactionController {

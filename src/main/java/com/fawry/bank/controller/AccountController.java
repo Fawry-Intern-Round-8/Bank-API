@@ -35,8 +35,12 @@ public class AccountController {
     }
 
     @PostMapping("/create")
-    public Account createAccount(@RequestBody AccountRequest accountRequest) {
-        return accountService.createAccount(accountRequest);
+    public ResponseEntity<?> createAccount(@RequestBody AccountRequest accountRequest) {
+        Account existingAccount = accountService.getAccountByEmail(accountRequest.getEmail()).orElse(null);
+        if (existingAccount != null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("this email already exists");
+        }
+        return ResponseEntity.ok(accountService.createAccount(accountRequest));
     }
 
     @GetMapping("cardNumber/{id}")
